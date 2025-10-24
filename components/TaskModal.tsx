@@ -45,7 +45,7 @@ const getPriorityClass = (priority: Priority) => {
 const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, taskToEdit, appData, currentUser, onDelete, onAddClient, defaultStatus }) => {
     
     const [task, setTask] = useState<Task>(taskToEdit || emptyTask(currentUser, appData.clients, appData.customStatuses, defaultStatus));
-    const [selectedClientId, setSelectedClientId] = useState<string>(taskToEdit?.client.id ?? '');
+    const [selectedClientId, setSelectedClientId] = useState<string>(taskToEdit?.client.id ?? (appData.clients[0]?.id || ''));
     const [newComment, setNewComment] = useState('');
     const [newSubtask, setNewSubtask] = useState('');
     const [assigneeDropdownOpen, setAssigneeDropdownOpen] = useState(false);
@@ -55,7 +55,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, taskToEd
     useEffect(() => {
         const initialTask = taskToEdit || emptyTask(currentUser, appData.clients, appData.customStatuses, defaultStatus);
         setTask(initialTask);
-        setSelectedClientId(taskToEdit?.client.id ?? '');
+        setSelectedClientId(initialTask.client?.id ?? '');
     }, [taskToEdit, currentUser, appData.clients, appData.customStatuses, defaultStatus]);
 
     if (!isOpen) return null;
