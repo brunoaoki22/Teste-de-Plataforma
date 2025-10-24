@@ -11,10 +11,11 @@ interface ProfileEditorProps {
 
 const ProfileEditor: React.FC<ProfileEditorProps> = ({ user, onClose, onSave }) => {
     // Basic state for editing
-    const [name, setName] = React.useState(user.name);
+    const [firstName, setFirstName] = React.useState(user.firstName);
+    const [lastName, setLastName] = React.useState(user.lastName);
 
     const handleSave = () => {
-        onSave({ ...user, name });
+        onSave({ ...user, firstName, lastName });
         onClose();
     };
 
@@ -29,11 +30,20 @@ const ProfileEditor: React.FC<ProfileEditorProps> = ({ user, onClose, onSave }) 
                 </div>
                 <div className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-text-secondary mb-1">Nome Completo</label>
+                        <label className="block text-sm font-medium text-text-secondary mb-1">Nome</label>
                         <input
                             type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            className="w-full p-2 bg-background border border-border rounded-lg"
+                        />
+                    </div>
+                     <div>
+                        <label className="block text-sm font-medium text-text-secondary mb-1">Sobrenome</label>
+                        <input
+                            type="text"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
                             className="w-full p-2 bg-background border border-border rounded-lg"
                         />
                     </div>

@@ -3,7 +3,6 @@ import Auth from './components/Auth';
 import Dashboard from './components/Dashboard';
 import { User, AppData, Task, UserRole, Client, CustomStatus } from './types';
 import { INITIAL_APP_DATA } from './constants';
-import './index.css';
 
 const App: React.FC = () => {
     const [currentUser, setCurrentUser] = useState<User | null>(null);

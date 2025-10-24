@@ -109,7 +109,7 @@ const ArchiveView: React.FC<ArchiveViewProps> = ({ appData, currentUser, onUpdat
                                     <td className="p-4">
                                         <div className="flex items-center -space-x-2">
                                             {task.assignees.slice(0, 3).map(user => (
-                                                <img key={user.id} src={user.avatarUrl} alt={user.name} className="w-6 h-6 rounded-full border-2 border-surface" title={user.name}/>
+                                                <img key={user.id} src={user.avatarUrl} alt={`${user.firstName} ${user.lastName}`} className="w-6 h-6 rounded-full border-2 border-surface" title={`${user.firstName} ${user.lastName}`}/>
                                             ))}
                                             {task.assignees.length > 3 && <div className="w-6 h-6 rounded-full bg-gray-600 flex items-center justify-center text-xs font-bold border-2 border-surface">+{task.assignees.length - 3}</div>}
                                         </div>
